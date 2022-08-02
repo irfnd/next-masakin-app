@@ -140,6 +140,9 @@ $nav-tabs-link-active-border-color: null;
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 
+$form-feedback-icon-valid: none;
+$form-feedback-icon-invalid: none;
+
 $form-validation-states: (
 	"valid": (
 		"color": $form-feedback-valid-color,
