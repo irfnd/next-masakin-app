@@ -1,0 +1,140 @@
+$primary: #f45d01;
+$secondary: #5a6168;
+$success: #20bf55;
+$info: #41ead4;
+$warning: #f0a202;
+$danger: #f71735;
+$light: #fffffa;
+$dark: #011627;
+
+$font-family-sans-serif: "Inter", sans-serif;
+$font-weight-thin: 100;
+$font-weight-lighter: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: 800;
+$font-weight-black: 900;
+
+// Custom Text Justify
+.text-justify {
+	text-align: justify;
+}
+
+// Custom Text-Size
+.ts-10 {
+	font-size: 10px;
+}
+.ts-12 {
+	font-size: 12px;
+}
+.ts-14 {
+	font-size: 14px;
+}
+.ts-16 {
+	font-size: 16px;
+}
+.ts-18 {
+	font-size: 18px;
+}
+.ts-20 {
+	font-size: 20px;
+}
+.ts-22 {
+	font-size: 22px;
+}
+.ts-24 {
+	font-size: 24px;
+}
+.ts-26 {
+	font-size: 26px;
+}
+.ts-28 {
+	font-size: 28px;
+}
+.ts-30 {
+	font-size: 30px;
+}
+.ts-32 {
+	font-size: 32px;
+}
+
+// Override font-weight
+$utilities: (
+	"font-weight": (
+		property: font-weight,
+		class: fw,
+		values: (
+			thin: $font-weight-thin,
+			light: $font-weight-light,
+			lighter: $font-weight-lighter,
+			normal: $font-weight-normal,
+			medium: $font-weight-medium,
+			semibold: $font-weight-semibold,
+			bold: $font-weight-bold,
+			bolder: $font-weight-bolder,
+			black: $font-weight-black,
+		),
+	),
+);
+
+// Custom Links
+$link-decoration: none;
+
+// Custom Buttons + Forms
+$input-btn-padding-y: 15px;
+$input-btn-font-family: $font-family-sans-serif;
+$input-btn-font-size: 14px;
+$input-btn-focus-width: null;
+$input-btn-focus-color-opacity: null;
+$input-btn-focus-color: null;
+$input-btn-focus-blur: null;
+$input-btn-focus-box-shadow: 0px 4px 10px 3px rgba(0, 0, 0, 0.11);
+
+// Custom Buttons
+$btn-font-weight: $font-weight-medium;
+$btn-active-box-shadow: $input-btn-focus-box-shadow;
+
+// Custom Forms
+$form-label-font-weight: $font-weight-medium;
+$form-label-color: $secondary;
+$input-padding-x: 20px;
+$input-font-family: $input-btn-font-family;
+$input-font-size: 14px;
+$input-font-weight: $font-weight-medium;
+$input-focus-border-color: $primary;
+
+// Custom Checkboxs
+$form-check-label-cursor: pointer;
+$form-check-label-color: $secondary;
+$form-check-input-focus-border: $input-focus-border-color;
+
+// Custom Tabs
+$nav-tabs-border-color: null;
+$nav-tabs-border-width: null;
+$nav-tabs-border-radius: null;
+$nav-tabs-link-hover-border-color: null;
+$nav-tabs-link-active-color: $dark;
+$nav-tabs-link-active-bg: null;
+$nav-tabs-link-active-border-color: null;
+
+// Custom Form Validation
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$form-validation-states: (
+	"valid": (
+		"color": $form-feedback-valid-color,
+		"icon": $form-feedback-icon-valid,
+		"focus-box-shadow": $input-btn-focus-box-shadow,
+	),
+	"invalid": (
+		"color": $form-feedback-invalid-color,
+		"icon": $form-feedback-icon-invalid,
+		"focus-box-shadow": $input-btn-focus-box-shadow,
+	),
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
