@@ -1,4 +1,5 @@
 $primary: #f45d01;
+$primary-hover: #f67527;
 $secondary: #c4c4c4;
 $secondary-2: #999999;
 $success: #20bf55;
@@ -18,6 +19,11 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $font-weight-bolder: 800;
 $font-weight-black: 900;
+
+// Custom Icon
+.show-icon {
+	cursor: pointer;
+}
 
 // Custom Text Justify
 .text-justify {
@@ -87,6 +93,7 @@ $utilities: (
 
 // Custom Links
 $link-decoration: none;
+$link-hover-color: $primary-hover;
 
 // Custom Buttons + Forms
 $input-btn-padding-y: 18px;
@@ -112,6 +119,8 @@ $input-font-size: 14px;
 $input-font-weight: $font-weight-medium;
 $input-focus-color: $primary;
 $input-focus-border-color: $primary;
+$input-placeholder-color: $secondary;
+$input-plaintext-color: $secondary-2;
 
 // Custom Checkboxs
 $form-check-label-cursor: pointer;
@@ -143,11 +152,6 @@ $form-validation-states: (
 		"focus-box-shadow": $input-btn-focus-box-shadow,
 	),
 );
-
-// Custom Icon
-.icon:focus {
-	color: $primary;
-}
 
 // Custom width + height
 @import "../../node_modules/bootstrap/scss/mixins";

@@ -28,7 +28,7 @@ export default function LoginForm() {
 				<span className="text-secondary-2 ts-14">
 					Don&apos;t have an account?{" "}
 					<Link href="/register" passHref>
-						<a>Sign Up</a>
+						<a className="fw-bold">Sign Up</a>
 					</Link>
 				</span>
 			</div>

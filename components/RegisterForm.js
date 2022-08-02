@@ -27,7 +27,7 @@ export default function RegisterForm() {
 				<span className="text-secondary-2 ts-14">
 					Already have account?{" "}
 					<Link href="/login" passHref>
-						<a>Log in Here</a>
+						<a className="fw-bold">Log in Here</a>
 					</Link>
 				</span>
 			</div>
