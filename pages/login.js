@@ -1,8 +1,9 @@
+// Components
 import Layout from "@/components/Layout";
 import FormLayout from "@/components/form/FormLayout";
 import FormImg from "@/components/form/FormImg";
 import FormTitle from "@/components/form/FormTitle";
-import FormLogin from "@/components/form/FormLogin";
+import LoginForm from "@/components/LoginForm";
 
 export default function Login() {
 	return (
@@ -10,7 +11,7 @@ export default function Login() {
 			<FormLayout bg="bg-white">
 				<FormImg mb={4} />
 				<FormTitle title={{ text: "Welcome !", size: 20 }} desc={{ text: "Log in to your exiting account.", size: 14 }} mb={4} />
-				<FormLogin />
+				<LoginForm />
 			</FormLayout>
 		</Layout>
 	);
