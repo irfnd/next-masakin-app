@@ -1,10 +1,11 @@
 $primary: #f45d01;
-$secondary: #5a6168;
+$secondary: #c4c4c4;
+$secondary-2: #999999;
 $success: #20bf55;
 $info: #41ead4;
 $warning: #f0a202;
 $danger: #f71735;
-$light: #fffffa;
+$light: #f5f5f5;
 $dark: #011627;
 
 $font-family-sans-serif: "Inter", sans-serif;
@@ -21,6 +22,10 @@ $font-weight-black: 900;
 // Custom Text Justify
 .text-justify {
 	text-align: justify;
+}
+
+.text-secondary-2 {
+	color: $secondary-2;
 }
 
 // Custom Text-Size
@@ -84,7 +89,7 @@ $utilities: (
 $link-decoration: none;
 
 // Custom Buttons + Forms
-$input-btn-padding-y: 15px;
+$input-btn-padding-y: 18px;
 $input-btn-font-family: $font-family-sans-serif;
 $input-btn-font-size: 14px;
 $input-btn-focus-width: null;
@@ -101,9 +106,11 @@ $btn-active-box-shadow: $input-btn-focus-box-shadow;
 $form-label-font-weight: $font-weight-medium;
 $form-label-color: $secondary;
 $input-padding-x: 20px;
+$input-padding-y: 18px;
 $input-font-family: $input-btn-font-family;
 $input-font-size: 14px;
 $input-font-weight: $font-weight-medium;
+$input-focus-color: $primary;
 $input-focus-border-color: $primary;
 
 // Custom Checkboxs
@@ -136,5 +143,25 @@ $form-validation-states: (
 		"focus-box-shadow": $input-btn-focus-box-shadow,
 	),
 );
+
+// Custom Icon
+.icon:focus {
+	color: $primary;
+}
+
+// Custom width + height
+@import "../../node_modules/bootstrap/scss/mixins";
+
+.mw-mobile {
+	width: 100%;
+
+	@include media-breakpoint-up(sm) {
+		max-width: 480px;
+	}
+}
+
+.min-vh {
+	min-height: 100vh;
+}
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

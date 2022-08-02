@@ -7,13 +7,14 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"format": "prettier --write ./**/*.{js,json,md} --config ./.prettierrc.json"
+		"format": "prettier --write ./**/*.{js,json,md,css,scss} --config ./.prettierrc.json"
 	},
 	"dependencies": {
 		"bootstrap": "^5.2.0",
 		"next": "12.2.3",
 		"react": "18.2.0",
-		"react-dom": "18.2.0"
+		"react-dom": "18.2.0",
+		"react-icons": "^4.4.0"
 	},
 	"devDependencies": {
 		"eslint": "8.21.0",
