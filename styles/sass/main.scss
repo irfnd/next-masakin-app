@@ -2,6 +2,7 @@ $primary: #f45d01;
 $primary-2: #f67527;
 $secondary: #c4c4c4;
 $secondary-2: #999999;
+$secondary-3: #666666;
 $success: #20bf55;
 $info: #41ead4;
 $warning: #f0a202;
@@ -15,6 +16,7 @@ $resip-theme: (
 	"primary-2": $primary-2,
 	"secondary": $secondary,
 	"secondary-2": $secondary-2,
+	"secondary-3": $secondary-3,
 	"success": $success,
 	"info": $info,
 	"warning": $warning,
@@ -185,14 +187,21 @@ $form-validation-states: (
 	}
 }
 
-.min-vh {
-	min-height: 100vh;
-}
-
 // Custom Navbar
 .navbar {
 	border-radius: 1rem 1rem 0 0;
-	width: 100%;
+	width: inherit;
+}
+
+// Custom Card
+.card-recipes {
+	width: 130px;
+	height: 150px;
+}
+
+// Custom Background
+.bg-home {
+	background: linear-gradient(180deg, #ffffff 64.58%, #eef0f3 100%);
 }
 
 $theme-colors: map-merge($theme-colors, $resip-theme);

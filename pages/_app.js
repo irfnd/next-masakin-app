@@ -2,6 +2,7 @@ import NextNProgress from "nextjs-progressbar";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
+import "swiper/css/bundle";
 import "@/styles/main.min.css";
 
 export default function MyApp({ Component, pageProps }) {
