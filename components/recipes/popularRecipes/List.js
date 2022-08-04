@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { RiUser3Fill, RiHeartFill, RiBookmarkFill } from "react-icons/ri";
 
-export default function List() {
+export default function PopularList() {
 	return (
 		<div className="w-100">
 			{[...Array(10)].map((el, i) => (

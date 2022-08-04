@@ -12,7 +12,7 @@ import FormInput from "@/components/form/FormInput";
 export default function RegisterForm() {
 	const formOptions = { resolver: yupResolver(RegisterSchema) };
 	const { register, handleSubmit, formState } = useForm(formOptions);
-	const { errors, isSubmitting } = formState;
+	const { errors } = formState;
 
 	const onSubmit = ({ email, password }) => console.log(email, password);
 

@@ -5,7 +5,7 @@ import FormImg from "@/components/form/FormImg";
 import FormTitle from "@/components/form/FormTitle";
 import LoginForm from "@/components/LoginForm";
 
-export default function Login() {
+export default function Login(props) {
 	return (
 		<Layout title="Login - Resip! App">
 			<FormLayout bg="bg-white">

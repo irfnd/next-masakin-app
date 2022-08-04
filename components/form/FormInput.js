@@ -34,14 +34,14 @@ export default function FormInput({ mb, icon, input, form }) {
 					<>
 						{showPassword ? (
 							<BiHide
-								className="position-absolute text-primary show-icon me-3 end-0"
+								className="position-absolute text-primary cursor-pointer me-3 end-0"
 								size={26}
 								onClick={() => setShowPassword(!showPassword)}
 								style={{ zIndex: 10 }}
 							/>
 						) : (
 							<BiShow
-								className="position-absolute text-primary show-icon me-3 end-0"
+								className="position-absolute text-primary cursor-pointer me-3 end-0"
 								size={26}
 								onClick={() => setShowPassword(!showPassword)}
 								style={{ zIndex: 10 }}

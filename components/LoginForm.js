@@ -1,24 +1,55 @@
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "@/utils/validations";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/utils/redux/slices/authSlice";
 
 // Icons & Images
 import { BiUser, BiLockAlt } from "react-icons/bi";
 
 // Components
 import FormInput from "@/components/form/FormInput";
+import FormAlert from "@/components/form/FormAlert";
 
 export default function LoginForm() {
+	const [loginSuccess, setLoginSuccess] = useState(null);
+	const [message, setMessage] = useState(null);
 	const formOptions = { resolver: yupResolver(LoginSchema) };
 	const { register, handleSubmit, formState } = useForm(formOptions);
-	const { errors, isSubmitting } = formState;
+	const { errors } = formState;
 
-	const onSubmit = ({ email, password }) => console.log(email, password);
+	const router = useRouter();
+	const dispatch = useDispatch();
+
+	const onSubmit = ({ email, password }) => {
+		dispatch(authActions.login({ email, password }))
+			.unwrap()
+			.then(() => {
+				setLoginSuccess(true);
+				setMessage("Login Successfully!");
+				setTimeout(() => {
+					router.push("/");
+				}, 1500);
+			})
+			.catch((err) => {
+				setLoginSuccess(false);
+				setMessage(err);
+			});
+	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="m-0 p-0">
 			<div className="col-auto p-0 mb-5">
+				{loginSuccess !== null &&
+					(loginSuccess ? (
+						<FormAlert type="success" message={message} closeAlert={() => setLoginSuccess(null)} />
+					) : (
+						<FormAlert type="danger" message={message} closeAlert={() => setLoginSuccess(null)} />
+					))}
+
 				<FormInput
 					icon={<BiUser />}
 					input={{ name: "email", type: "email", placeholder: "examplexxx@gmail.com", bg: "bg-light" }}
@@ -48,12 +79,4 @@ export default function LoginForm() {
 			</div>
 		</form>
 	);
-}
-
-{
-	/*
-		<div className="col text-end p-0 mb-4">
-			<span className="text-secondary-2 fw-semibold ts-14">Forgot Password ?</span>
-		</div>
-	*/
 }
