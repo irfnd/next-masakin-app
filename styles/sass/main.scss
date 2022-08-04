@@ -123,11 +123,27 @@ $btn-font-weight: $font-weight-medium;
 $btn-active-box-shadow: $input-btn-focus-box-shadow;
 
 .btn-white-text {
-	color: $secondary-2;
+	color: $secondary-2 !important;
 }
 
 .btn-white-text:hover {
-	color: $primary;
+	color: $primary !important;
+}
+
+.btn-white-text:focus {
+	color: $primary !important;
+}
+
+.btn-outline-primary-text {
+	color: $primary !important;
+}
+
+.btn-outline-primary-text:hover {
+	color: $white !important;
+}
+
+.btn-outline-primary-text:focus {
+	color: $white !important;
 }
 
 // Custom Forms
@@ -184,6 +200,14 @@ $form-validation-states: (
 
 	@include media-breakpoint-up(sm) {
 		max-width: 480px;
+	}
+}
+
+.mw-profile {
+	width: 95%;
+
+	@include media-breakpoint-up(sm) {
+		max-width: 460px;
 	}
 }
 

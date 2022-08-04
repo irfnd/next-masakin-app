@@ -4,9 +4,9 @@ import { store, persistor } from "@/utils/redux/store";
 import NextNProgress from "nextjs-progressbar";
 
 // Styles
+import "swiper/css/bundle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/main.min.css";
-import "swiper/css/bundle";
 
 export default function MyApp({ Component, pageProps }) {
 	return (
