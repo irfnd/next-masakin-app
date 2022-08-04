@@ -9,7 +9,7 @@ export default function PopularRecipes({ mb }) {
 				<p className="ts-20 fw-bold m-0">Popular Recipes</p>
 				<Link href="/recipes/popular" passHref>
 					<a>
-						<p className="text-primary m-0">More info</p>
+						<p className="ts-14 text-primary m-0">More info</p>
 					</a>
 				</Link>
 			</div>

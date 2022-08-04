@@ -12,11 +12,12 @@ import { BiUser, BiLockAlt } from "react-icons/bi";
 
 // Components
 import FormInput from "@/components/form/FormInput";
-import FormAlert from "@/components/form/FormAlert";
+import FormToast from "@/components/form/FormToast";
 
 export default function LoginForm() {
-	const [loginSuccess, setLoginSuccess] = useState(null);
+	const [isSuccess, setIsSuccess] = useState(null);
 	const [message, setMessage] = useState(null);
+
 	const formOptions = { resolver: yupResolver(LoginSchema) };
 	const { register, handleSubmit, formState } = useForm(formOptions);
 	const { errors } = formState;
@@ -28,28 +29,26 @@ export default function LoginForm() {
 		dispatch(authActions.login({ email, password }))
 			.unwrap()
 			.then(() => {
-				setLoginSuccess(true);
+				setIsSuccess(true);
 				setMessage("Login Successfully!");
-				setTimeout(() => {
-					router.push("/");
-				}, 1500);
+				setTimeout(() => router.push("/"), 3500);
 			})
 			.catch((err) => {
-				setLoginSuccess(false);
+				setIsSuccess(false);
 				setMessage(err);
+			})
+			.finally(() => {
+				setTimeout(() => {
+					setIsSuccess(null);
+					setMessage(null);
+				}, 3500);
 			});
 	};
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="m-0 p-0">
 			<div className="col-auto p-0 mb-5">
-				{loginSuccess !== null &&
-					(loginSuccess ? (
-						<FormAlert type="success" message={message} closeAlert={() => setLoginSuccess(null)} />
-					) : (
-						<FormAlert type="danger" message={message} closeAlert={() => setLoginSuccess(null)} />
-					))}
-
+				<FormToast isSuccess={isSuccess} message={message} />
 				<FormInput
 					icon={<BiUser />}
 					input={{ name: "email", type: "email", placeholder: "examplexxx@gmail.com", bg: "bg-light" }}
