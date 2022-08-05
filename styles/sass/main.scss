@@ -117,6 +117,31 @@ $utilities: (
 	border-width: 1px;
 }
 
+.tabs {
+	font-weight: $font-weight-semibold;
+	color: $secondary-2;
+}
+
+.tabs:hover {
+	color: $secondary-3;
+	font-weight: $font-weight-semibold;
+	border-bottom: 2px $primary solid;
+}
+
+.tabs-active {
+	color: $secondary-3;
+	font-weight: $font-weight-semibold;
+	border-bottom: 2px $primary solid;
+}
+
+.tabs-content {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.tabs-content::-webkit-scrollbar {
+	display: none;
+}
+
 // Custom Links
 $link-decoration: none;
 $link-hover-color: $primary-2;

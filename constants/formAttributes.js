@@ -15,3 +15,7 @@ export const addRecipeAttr = {
 	name: { name: "name", type: "text", placeholder: "Title", bg: "bg-white" },
 	shortDesc: { name: "shortDesc", placeholder: "Description", bg: "bg-white", rows: 5 },
 };
+
+export const postCommentAttr = {
+	comment: { name: "comment", placeholder: "Your comment", bg: "bg-white", rows: 5 },
+};

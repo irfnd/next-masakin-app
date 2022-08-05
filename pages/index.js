@@ -33,7 +33,6 @@ export const getServerSideProps = async () => {
 		props: {
 			fallback: {
 				"/recipes/newRecipes": newRecipes,
-				"/recipes/popularRecipes": null,
 			},
 		},
 	};
