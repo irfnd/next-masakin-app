@@ -7,7 +7,7 @@ export default function FormBackBtn() {
 	const router = useRouter();
 
 	return (
-		<div className="w-auto mx-4 text-primary">
+		<div className="w-auto mx-4 text-primary cursor-pointer">
 			<BiLeftArrowAlt size={36} onClick={() => router.back()} />
 		</div>
 	);

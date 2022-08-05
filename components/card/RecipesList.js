@@ -1,24 +1,23 @@
 import Link from "next/link";
 
+// Icons + Images
 import { RiUser3Fill, RiHeartFill, RiBookmarkFill } from "react-icons/ri";
 
-export default function RecipesList({ recipe }) {
+export default function RecipesList({ recipe, key, withBtn = false }) {
 	return (
-		<div className="row bg-white shadow-sm rounded-4 m-0 mb-3 p-0">
+		<div className="row bg-white shadow-sm rounded-4 m-0 mb-3 p-0" key={key}>
 			<div className="col-auto d-flex align-items-center p-3 pe-0">
-				<Link href="/" passHref>
-					<a>
-						<div
-							className="rounded-4"
-							style={{
-								height: "70px",
-								width: "70px",
-								backgroundImage: `url(${recipe.photo})`,
-								backgroundPosition: "center",
-								backgroundSize: "cover",
-							}}
-						></div>
-					</a>
+				<Link href="/">
+					<div
+						className="rounded-4"
+						style={{
+							height: "70px",
+							width: "70px",
+							backgroundImage: `url(${recipe.photo})`,
+							backgroundPosition: "center",
+							backgroundSize: "cover",
+						}}
+					></div>
 				</Link>
 			</div>
 			<div className="col d-flex flex-column p-3">
@@ -38,16 +37,18 @@ export default function RecipesList({ recipe }) {
 					</span>
 				</div>
 			</div>
-			<div className="col-auto d-flex flex-column justify-content-center p-3 ps-0">
-				<div className="">
-					<button className="btn btn-warning rounded-circle text-white p-2 me-1">
-						<RiHeartFill size={20} />
-					</button>
-					<button className="btn btn-warning rounded-circle text-white p-2">
-						<RiBookmarkFill size={20} />
-					</button>
+			{withBtn && (
+				<div className="col-auto d-flex flex-column justify-content-center p-3 ps-0">
+					<div className="">
+						<button className="btn btn-warning rounded-circle text-white p-2 me-1">
+							<RiHeartFill size={20} />
+						</button>
+						<button className="btn btn-warning rounded-circle text-white p-2">
+							<RiBookmarkFill size={20} />
+						</button>
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	);
 }

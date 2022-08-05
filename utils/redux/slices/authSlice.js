@@ -2,6 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authWrapper from "@/utils/axios/authWrapper";
 
 const extraActions = {
+	register: createAsyncThunk("auth/register", async (data, thunkAPI) => {
+		try {
+			const res = await authWrapper.register(data);
+			return res.data.results;
+		} catch (err) {
+			return thunkAPI.rejectWithValue(err?.response?.data?.details);
+		}
+	}),
 	login: createAsyncThunk("auth/login", async (data, thunkAPI) => {
 		try {
 			const res = await authWrapper.login(data);
@@ -14,8 +22,10 @@ const extraActions = {
 };
 
 const extraReducers = () => {
-	const { login } = extraActions;
+	const { register, login } = extraActions;
 	return {
+		[register.fulfilled]: () => initialState,
+		[register.rejected]: () => initialState,
 		[login.fulfilled]: (state, action) => {
 			state.isLoggedIn = true;
 			state.user = action.payload;
@@ -33,10 +43,9 @@ const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	reducers: {
-		logout: (state) => {
+		logout: () => {
 			authWrapper.logout();
-			state.isLoggedIn = false;
-			state.user = null;
+			return initialState;
 		},
 		reset: () => initialState,
 	},

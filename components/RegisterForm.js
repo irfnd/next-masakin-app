@@ -1,69 +1,79 @@
+import { useState } from "react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "@/utils/validations";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/utils/redux/slices/authSlice";
 
 // Icons & Images
 import { BiUser, BiEnvelope, BiPhone, BiLockAlt, BiLockOpenAlt } from "react-icons/bi";
 
 // Components
 import FormInput from "@/components/form/FormInput";
+import FormToast from "@/components/form/FormToast";
+
+// Static Constants
+import { registerAttr } from "@/constants/formAttributes";
 
 export default function RegisterForm() {
-	const formOptions = { resolver: yupResolver(RegisterSchema) };
-	const { register, handleSubmit, formState } = useForm(formOptions);
-	const { errors } = formState;
+	const [isSuccess, setIsSuccess] = useState(null);
+	const [message, setMessage] = useState(null);
 
-	const onSubmit = ({ email, password }) => console.log(email, password);
+	const formOptions = { resolver: yupResolver(RegisterSchema) };
+	const methods = useForm(formOptions);
+
+	const router = useRouter();
+	const dispatch = useDispatch();
+
+	const onSubmit = ({ name, email, phoneNumber, password }) => {
+		dispatch(authActions.register({ name, email, phoneNumber, password }))
+			.unwrap()
+			.then(() => {
+				setIsSuccess(true);
+				setMessage("Register Successfully!");
+				setTimeout(() => router.push("/login"), 3500);
+			})
+			.catch((err) => {
+				setIsSuccess(false);
+				setMessage(err);
+			})
+			.finally(() => {
+				setTimeout(() => {
+					setIsSuccess(null);
+					setMessage(null);
+				}, 3500);
+			});
+	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className="m-0 p-0">
-			<div className="col-auto p-0 mb-5">
-				<FormInput
-					icon={<BiUser />}
-					input={{ name: "name", type: "text", placeholder: "Name", bg: "bg-white" }}
-					form={{ register, errors }}
-					mb={3}
-				/>
-				<FormInput
-					icon={<BiEnvelope />}
-					input={{ name: "email", type: "email", placeholder: "E-Mail", bg: "bg-white" }}
-					form={{ register, errors }}
-					mb={3}
-				/>
-				<FormInput
-					icon={<BiPhone />}
-					input={{ name: "phoneNumber", type: "text", placeholder: "Phone Number", bg: "bg-white" }}
-					form={{ register, errors }}
-					mb={3}
-				/>
-				<FormInput
-					icon={<BiLockAlt />}
-					input={{ name: "password", type: "password", placeholder: "Create New Password", bg: "bg-white" }}
-					form={{ register, errors }}
-					mb={3}
-				/>
-				<FormInput
-					icon={<BiLockOpenAlt />}
-					input={{ name: "confirmPassword", type: "password", placeholder: "Confirm New Password", bg: "bg-white" }}
-					form={{ register, errors }}
-				/>
-			</div>
+		<FormProvider {...methods}>
+			<form onSubmit={methods.handleSubmit(onSubmit)} className="m-0 p-0">
+				<div className="col-auto p-0 mb-5">
+					<FormToast isSuccess={isSuccess} message={message} />
+					<FormInput icon={<BiUser />} input={registerAttr.name} mb={3} />
+					<FormInput icon={<BiEnvelope />} input={registerAttr.email} mb={3} />
+					<FormInput icon={<BiPhone />} input={registerAttr.phoneNumber} mb={3} />
+					<FormInput icon={<BiLockAlt />} input={registerAttr.password} mb={3} />
+					<FormInput icon={<BiLockOpenAlt />} input={registerAttr.confirmPassword} />
+				</div>
 
-			<div className="col-auto p-0 mb-3">
-				<button type="submit" className="btn btn-primary text-white w-100">
-					SIGN UP
-				</button>
-			</div>
+				<div className="col-auto p-0 mb-3">
+					<button type="submit" className="btn btn-primary text-white rounded-4 w-100">
+						SIGN UP
+					</button>
+				</div>
 
-			<div className="col-auto p-0 text-center">
-				<span className="text-secondary-2 ts-14">
-					Already have account?{" "}
-					<Link href="/login" passHref>
-						<a className="fw-bold">Log in Here</a>
-					</Link>
-				</span>
-			</div>
-		</form>
+				<div className="col-auto p-0 text-center">
+					<span className="text-secondary-2 ts-14">
+						Already have account?{" "}
+						<Link href="/login" passHref>
+							<a className="fw-bold">Log in Here</a>
+						</Link>
+					</span>
+				</div>
+			</form>
+		</FormProvider>
 	);
 }

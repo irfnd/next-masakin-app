@@ -2,11 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
-import rootReducers from "@/utils/redux/slices";
 import storage from "@/utils/redux/storage";
+import rootReducers from "@/utils/redux/slices";
 
 const persistConfig = {
-	key: "resip!-app",
+	key: "resip-app",
 	version: 1,
 	whitelist: ["auth"],
 	storage,

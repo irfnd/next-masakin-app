@@ -1,56 +1,42 @@
 import { cloneElement, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
-// Icons + Images
-import { BiShow, BiHide } from "react-icons/bi";
+// Components
+import FormShowPass from "@/components/form/FormShowPass";
 
-export default function FormInput({ mb, icon, input, form }) {
+export default function FormInput({ mb, icon, input }) {
 	const [showPassword, setShowPassword] = useState(false);
 	const [iconColor, setIconColor] = useState(false);
-	const { onChange, name, ref } = form.register(input.name);
 
-	const changeIconColor = () => setIconColor(!iconColor);
+	const { register, formState } = useFormContext();
+	const { onChange, name, ref } = register(input.name);
+	const { errors } = formState;
+
+	// Attributes
+	const container = `${mb ? `mb-${mb}` : null}`;
+	const iconStyle = `position-absolute ms-3 ${errors[input.name] ? "text-danger" : iconColor ? "text-primary" : "text-secondary-2"}`;
+	const inputType = input.type === "password" ? (showPassword ? "text" : input.type) : input.type;
+	const inputStyle = `form-control rounded-4 ${input.bg} ${errors[input.name] && "is-invalid"} ps-5`;
 
 	return (
-		<div className={`${mb ? `mb-${mb}` : null}`}>
+		<div className={container}>
 			<div className="position-relative d-flex align-items-center w-100">
-				{cloneElement(icon, {
-					className: `position-absolute ms-3 ${form.errors[input.name] ? "text-danger" : iconColor ? "text-primary" : "text-secondary-2"}`,
-					size: 24,
-					style: { zIndex: 10 },
-				})}
+				{cloneElement(icon, { className: iconStyle, size: 24, style: { zIndex: 10 } })}
 				<div className="input-group has-validation">
 					<input
-						type={input.type === "password" ? (showPassword ? "text" : input.type) : input.type}
+						type={inputType}
 						name={name}
-						className={`form-control ${input.bg} ${form.errors[input.name] && "is-invalid"} ps-5`}
+						className={inputStyle}
 						placeholder={input.placeholder}
-						onFocus={changeIconColor}
-						onBlur={changeIconColor}
+						onFocus={() => setIconColor(!iconColor)}
+						onBlur={() => setIconColor(!iconColor)}
 						onChange={onChange}
 						ref={ref}
 					/>
 				</div>
-				{input.type === "password" && (
-					<>
-						{showPassword ? (
-							<BiHide
-								className="position-absolute text-primary cursor-pointer me-3 end-0"
-								size={26}
-								onClick={() => setShowPassword(!showPassword)}
-								style={{ zIndex: 10 }}
-							/>
-						) : (
-							<BiShow
-								className="position-absolute text-primary cursor-pointer me-3 end-0"
-								size={26}
-								onClick={() => setShowPassword(!showPassword)}
-								style={{ zIndex: 10 }}
-							/>
-						)}
-					</>
-				)}
+				{input.type === "password" && <FormShowPass showPassword={showPassword} onClick={() => setShowPassword(!showPassword)} />}
 			</div>
-			{form.errors[input.name] && <span className="text-danger ts-14">{form.errors[input.name].message}</span>}
+			{errors[input.name] && <span className="text-danger ts-14">{errors[input.name].message}</span>}
 		</div>
 	);
 }

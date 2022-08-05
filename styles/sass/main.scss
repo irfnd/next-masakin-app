@@ -104,6 +104,19 @@ $utilities: (
 	),
 );
 
+// Custom Border
+.border-1 {
+	border-style: solid;
+	border-color: var(--bs-gray-400);
+	border-width: 1px;
+}
+
+.border-1:focus {
+	border-style: solid;
+	border-color: $primary;
+	border-width: 1px;
+}
+
 // Custom Links
 $link-decoration: none;
 $link-hover-color: $primary-2;
