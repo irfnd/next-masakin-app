@@ -11,10 +11,7 @@ export default function Menu() {
 
 	if (isLoggedIn) {
 		return (
-			<div
-				className="position-absolute d-flex flex-column rounded-5 shadow-sm bottom-0 bg-home mw-profile p-4 pb-5"
-				style={{ zIndex: 10, height: "60%" }}
-			>
+			<div className="d-flex flex-column align-items-center h-auto mw-profile gap-2 p-5 pt-0 mb-5" style={{ zIndex: 2 }}>
 				<Link href="/profile/edit">
 					<div className="d-flex align-items-center cursor-pointer w-100 gap-3 py-3 px-2 fw-semibold">
 						<RiUser3Line className="text-warning" size={28} />
@@ -55,10 +52,7 @@ export default function Menu() {
 	}
 
 	return (
-		<div
-			className="position-absolute d-flex flex-column justify-content-center align-items-center rounded-5 shadow bottom-0 bg-home mw-profile gap-3 px-4 pb-5"
-			style={{ zIndex: 10, height: "60%" }}
-		>
+		<div className="d-flex flex-column align-items-center h-auto mw-profile gap-3 px-4 py-5 mb-5">
 			<span className="fw-semibold mb-2">You are not logged in yet!</span>
 			<Link href="/register">
 				<button className="btn btn-primary w-75 text-white rounded-4">SIGN UP</button>
