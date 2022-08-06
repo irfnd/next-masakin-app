@@ -1,9 +1,12 @@
+import { SWRConfig } from "swr";
+import recipesWrapper from "@/utils/axios/recipesWrapper";
+
 // Components
 import Layout from "@/components/Layout";
 import BackBtn from "@/components/BackBtn";
-import PopularList from "@/components/recipes/popularRecipes/List";
+import PopularRecipesList from "@/components/lists/PopularRecipesList";
 
-export default function Popular() {
+export default function Popular({ fallback }) {
 	return (
 		<Layout title="Popular Recipes - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
@@ -11,10 +14,24 @@ export default function Popular() {
 					<div className="d-flex flex-column w-100">
 						<BackBtn />
 						<span className="text-center text-primary ts-20 fw-bold w-100 py-1 mb-4">Popular Recipes</span>
-						<PopularList />
+						<SWRConfig value={{ fallback }}>
+							<PopularRecipesList />
+						</SWRConfig>
 					</div>
 				</div>
 			</div>
 		</Layout>
 	);
 }
+
+export const getStaticProps = async () => {
+	const PopularRecipes = await recipesWrapper.fetcher("/recipes/popular");
+
+	return {
+		props: {
+			fallback: {
+				"/recipes/popular": PopularRecipes,
+			},
+		},
+	};
+};

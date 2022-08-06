@@ -1,10 +1,7 @@
 import Link from "next/link";
 
-// Icons + Images
-import { RiUser3Fill, RiHeartFill, RiBookmarkFill } from "react-icons/ri";
-
 // Components
-import RecipesList from "@/components/card/RecipesList";
+import PopularRecipesList from "@/components/lists/PopularRecipesList";
 
 export default function PopularRecipes() {
 	return (
@@ -15,9 +12,7 @@ export default function PopularRecipes() {
 					<a className="ts-14 text-primary m-0">More info</a>
 				</Link>
 			</div>
-			{/* {[...Array(5)].map((el, i) => (
-				<RecipesList key={i} />
-			))} */}
+			<PopularRecipesList isHome />
 		</div>
 	);
 }

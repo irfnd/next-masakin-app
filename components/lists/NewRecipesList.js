@@ -2,17 +2,18 @@ import Link from "next/link";
 import useSWR from "swr";
 import { FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { newRecipes } from "@/utils/axios/recipesWrapper";
+import { fetcher } from "@/utils/axios/recipesWrapper";
 
 export default function NewRecipesList() {
-	const { data, error } = useSWR("/recipes/newRecipes", newRecipes);
+	const { data, error } = useSWR("/recipes/new", fetcher);
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
+
 	return (
 		<Swiper modules={[FreeMode]} spaceBetween={15} slidesPerView={"auto"} freeMode>
-			{data.length > 0 ? (
-				data.map((recipe) => (
+			{data.rows.length > 0 ? (
+				data.rows.map((recipe) => (
 					<SwiperSlide
 						key={recipe.id}
 						className="shadow-sm rounded-4 mb-1"
