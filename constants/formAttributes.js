@@ -19,3 +19,11 @@ export const addRecipeAttr = {
 export const postCommentAttr = {
 	comment: { name: "comment", placeholder: "Your comment", bg: "bg-white", rows: 5 },
 };
+
+export const editProfileAttr = {
+	name: { name: "name", type: "text", placeholder: "Name", bg: "bg-white" },
+	email: { name: "email", type: "email", placeholder: "E-Mail", bg: "bg-white" },
+	phoneNumber: { name: "phoneNumber", type: "text", placeholder: "Phone Number", bg: "bg-white" },
+	password: { name: "password", type: "password", placeholder: "Password", bg: "bg-white" },
+	confirmPassword: { name: "confirmPassword", type: "password", placeholder: "Confirm New Password", bg: "bg-white" },
+};

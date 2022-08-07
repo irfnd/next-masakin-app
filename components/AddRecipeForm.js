@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Icons + Images
-import { BiBookOpen } from "react-icons/bi";
+import { BiBookOpen, BiNotepad, BiTask } from "react-icons/bi";
 
 // Components
 import FormInput from "@/components/form/FormInput";
@@ -30,7 +30,8 @@ export default function AddRecipeForm() {
 					<FormToast isSuccess={isSuccess} message={message} />
 					<FormInput icon={<BiBookOpen />} input={addRecipeAttr.name} mb={3} />
 					<FormTextarea input={addRecipeAttr.shortDesc} mb={3} />
-					<FormDynamic input={{ name: "ingredients", placeholder: "Ingredients" }} />
+					<FormDynamic icon={<BiNotepad />} input={{ name: "ingredients", placeholder: "Ingredients" }} mb={3} />
+					{/* <FormDynamic icon={<BiTask />} input={{ name: "steps", placeholder: "Steps" }} /> */}
 				</div>
 
 				<div className="col-auto p-0 mb-3">
