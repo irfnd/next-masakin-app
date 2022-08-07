@@ -18,6 +18,7 @@ import FormToast from "@/components/form/FormToast";
 import { loginAttr } from "@/constants/formAttributes";
 
 export default function LoginForm() {
+	const [isLoading, setIsLoading] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(null);
 	const [message, setMessage] = useState(null);
 
@@ -28,9 +29,11 @@ export default function LoginForm() {
 	const dispatch = useDispatch();
 
 	const onSubmit = ({ email, password }) => {
+		setIsLoading(true);
 		dispatch(authActions.login({ email, password }))
 			.unwrap()
 			.then(() => {
+				setIsLoading(false);
 				setIsSuccess(true);
 				setMessage("Login Successfully!");
 				setTimeout(() => router.push("/"), 3500);
@@ -38,12 +41,11 @@ export default function LoginForm() {
 			.catch((err) => {
 				setIsSuccess(false);
 				setMessage(err);
-			})
-			.finally(() => {
 				setTimeout(() => {
+					setIsLoading(false);
 					setIsSuccess(null);
 					setMessage(null);
-				}, 3500);
+				}, 3000);
 			});
 	};
 
@@ -57,8 +59,15 @@ export default function LoginForm() {
 				</div>
 
 				<div className="col-auto p-0 mb-3">
-					<button type="submit" className="btn btn-primary rounded-4 text-white w-100">
-						LOG IN
+					<button type="submit" className="btn btn-primary rounded-4 text-white w-100" disabled={isLoading || isSuccess}>
+						{isLoading && (
+							<>
+								<span className="spinner-border spinner-border-sm me-3"></span>
+								LOADING...
+							</>
+						)}
+						{!isLoading && !isSuccess && "LOG IN"}
+						{!isLoading && isSuccess && "YOU ARE LOGGED IN"}
 					</button>
 				</div>
 

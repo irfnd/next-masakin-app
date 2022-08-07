@@ -11,10 +11,10 @@ export default function Mine({ fallback }) {
 	return (
 		<Layout title="Popular Recipes - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
-				<div className="d-flex flex-column align-items-center bg-home mw-mobile p-4 pb-5">
+				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column w-100">
 						<BackBtn />
-						<span className="text-center text-primary ts-20 fw-bold w-100 py-1 mb-4">My Recipes</span>
+						<span className="text-center text-primary ts-20 fw-bold w-100 py-1 mb-5">My Recipes</span>
 						<SWRConfig value={{ fallback }}>
 							<MineRecipesList />
 						</SWRConfig>

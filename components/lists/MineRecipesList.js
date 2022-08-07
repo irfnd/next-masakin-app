@@ -10,5 +10,6 @@ export default function MineRecipesList() {
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
+
 	return <>{data.length > 0 && data.map((recipe) => <RecipesList recipe={recipe} key={recipe.id} />)}</>;
 }

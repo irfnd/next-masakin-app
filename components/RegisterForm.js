@@ -18,6 +18,7 @@ import FormToast from "@/components/form/FormToast";
 import { registerAttr } from "@/constants/formAttributes";
 
 export default function RegisterForm() {
+	const [isLoading, setIsLoading] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(null);
 	const [message, setMessage] = useState(null);
 
@@ -28,9 +29,11 @@ export default function RegisterForm() {
 	const dispatch = useDispatch();
 
 	const onSubmit = ({ name, email, phoneNumber, password }) => {
+		setIsLoading(true);
 		dispatch(authActions.register({ name, email, phoneNumber, password }))
 			.unwrap()
 			.then(() => {
+				setIsLoading(false);
 				setIsSuccess(true);
 				setMessage("Register Successfully!");
 				setTimeout(() => router.push("/login"), 3500);
@@ -38,12 +41,11 @@ export default function RegisterForm() {
 			.catch((err) => {
 				setIsSuccess(false);
 				setMessage(err);
-			})
-			.finally(() => {
 				setTimeout(() => {
+					setIsLoading(false);
 					setIsSuccess(null);
 					setMessage(null);
-				}, 3500);
+				}, 3000);
 			});
 	};
 
@@ -60,8 +62,15 @@ export default function RegisterForm() {
 				</div>
 
 				<div className="col-auto p-0 mb-3">
-					<button type="submit" className="btn btn-primary text-white rounded-4 w-100">
-						SIGN UP
+					<button type="submit" className="btn btn-primary text-white rounded-4 w-100" disabled={isLoading || isSuccess}>
+						{isLoading && (
+							<>
+								<span className="spinner-border spinner-border-sm me-3"></span>
+								LOADING...
+							</>
+						)}
+						{!isLoading && !isSuccess && "SIGN UP"}
+						{!isLoading && isSuccess && "YOU ARE REGISTERED"}
 					</button>
 				</div>
 
