@@ -9,7 +9,7 @@ import BackBtn from "@/components/BackBtn";
 
 export default function ProfileEdit() {
 	return (
-		<Layout title="Popular Recipes - Resip! App">
+		<Layout title="Edit Profile - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column h-100 w-100">
@@ -23,7 +23,7 @@ export default function ProfileEdit() {
 									<RiArrowRightSLine className="text-warning ms-auto" size={25} />
 								</div>
 							</Link>
-							<Link href="/recipes/edit/photo">
+							<Link href="/profile/edit/photo">
 								<div className="d-flex align-items-center bg-white rounded-4 shadow-sm cursor-pointer w-100 gap-3 p-3 py-4 fw-semibold">
 									<RiImageEditFill className="text-warning" size={28} />
 									Change Profile Photo

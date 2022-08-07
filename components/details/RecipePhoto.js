@@ -9,6 +9,7 @@ import BackBtn from "@/components/BackBtn";
 
 export default function RecipePhoto({ id }) {
 	const { data, error } = useSWR(`/recipes/${id}`, recipesWrapper.get);
+	console.log(data);
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
@@ -22,7 +23,7 @@ export default function RecipePhoto({ id }) {
 			<div className="position-relative d-flex justify-content-between align-items-end pb-2 mb-5 w-100 h-100">
 				<BackBtn style={{ top: 0 }} color="text-white" />
 				<div className="d-flex flex-column gap-2 w-50">
-					<span className="text-white ts-36 lh-2 fw-bold">{data.name}</span>
+					<span className="text-white ts-30 w-100 lh-2 fw-bold">{data.name}</span>
 					<span className="text-white ts-14 fw-light">By {data.user.name}</span>
 				</div>
 				<div className="d-flex gap-2">

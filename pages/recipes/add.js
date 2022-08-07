@@ -5,10 +5,10 @@ import Navbar from "@/components/Navbar";
 
 export default function Add() {
 	return (
-		<Layout title="Popular Recipes - Resip! App">
+		<Layout title="Add Recipe - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-light mw-mobile p-4 pb-5">
-					<div className="d-flex flex-column w-100 pb-5">
+					<div className="d-flex flex-column w-100 pb-5 mb-4">
 						<span className="text-center text-primary ts-20 fw-bold w-100 py-1 my-5">Add Your Recipe</span>
 						<AddRecipeForm />
 					</div>

@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import recipesWrapper from "@/utils/axios/recipesWrapper";
+import moment from "moment";
 
 export default function DetailTabContent({ id }) {
 	const { data, error } = useSWR(`/recipes/${id}`, recipesWrapper.get);
@@ -14,7 +15,7 @@ export default function DetailTabContent({ id }) {
 
 			<p className="fw-semibold ts-16">Ingredients</p>
 			<p>{data.ingredients ? null : "No Ingredients"}</p>
-			<ul className="text-secondary-3 ps-4">
+			<ul className="text-secondary-3 ps-4 pb-4">
 				{data.ingredients &&
 					data.ingredients.map((item, i) => (
 						<li key={i} className="mb-2">
@@ -22,6 +23,8 @@ export default function DetailTabContent({ id }) {
 						</li>
 					))}
 			</ul>
+
+			<p className="ts-12 fst-italic">Created at {moment(data.createdAt).format("MMMM DD, YYYY")}</p>
 		</div>
 	);
 }

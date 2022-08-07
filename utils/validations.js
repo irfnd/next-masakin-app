@@ -9,8 +9,14 @@ export const LoginSchema = yup.object({
 });
 
 export const RegisterSchema = yup.object({
-	name: yup.string().required("Name required!"),
-	email: yup.string().trim().lowercase().email("Email must be valid!").required("Email required!"),
+	name: yup.string().trim().max(45, "Name must be less than 45 characters!").required("Name required!"),
+	email: yup
+		.string()
+		.trim()
+		.lowercase()
+		.email("Email must be valid!")
+		.max(60, "Email must be less than 60 characters!")
+		.required("Email required!"),
 	phoneNumber: yup
 		.string()
 		.trim()
@@ -34,4 +40,10 @@ export const RegisterSchema = yup.object({
 		.trim()
 		.required("Confirm your password!")
 		.oneOf([yup.ref("password"), null], "Password do not match!"),
+});
+
+export const AddRecipeSchema = yup.object().shape({
+	name: yup.string().max(50, "Name must be less than 50 characters!").required("Name required!"),
+	photo: yup.mixed(),
+	shortDesc: yup.string().trim().max(250, "Description must be less than 250 characters!"),
 });

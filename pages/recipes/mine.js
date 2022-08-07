@@ -9,7 +9,7 @@ import MineRecipesList from "@/components/lists/MineRecipesList";
 
 export default function Mine({ fallback }) {
 	return (
-		<Layout title="Popular Recipes - Resip! App">
+		<Layout title="My Recipes - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column w-100">

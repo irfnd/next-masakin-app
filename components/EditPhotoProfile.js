@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import FormPhotoProfile from "@/components/form/FormPhotoProfile";
 import FormToast from "@/components/form/FormToast";
 
-export default function EditPhotoProfile() {
+export default function EditPhotoProfile({ photo }) {
 	const [isSuccess, setIsSuccess] = useState(null);
 	const [message, setMessage] = useState(null);
 
@@ -26,7 +26,7 @@ export default function EditPhotoProfile() {
 			<form onSubmit={methods.handleSubmit(onSubmit)} className="m-0 p-0 mt-4">
 				<div className="col p-0 mb-5">
 					<FormToast isSuccess={isSuccess} message={message} />
-					<FormPhotoProfile input={{ name: "photo" }} />
+					<FormPhotoProfile input={{ name: "photo" }} photo={photo} />
 				</div>
 
 				<div className="col p-0 mb-3">

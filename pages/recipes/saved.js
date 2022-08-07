@@ -9,7 +9,7 @@ import SavedRecipesList from "@/components/lists/SavedRecipesList";
 
 export default function Saved({ fallback }) {
 	return (
-		<Layout title="Popular Recipes - Resip! App">
+		<Layout title="Saved Recipes - Resip! App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column w-100">
