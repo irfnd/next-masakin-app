@@ -1,11 +1,11 @@
 import useSWR from "swr";
-import { fetcher } from "@/utils/axios/recipesWrapper";
+import recipesWrapper from "@/utils/axios/recipesWrapper";
 
 // Components
 import RecipesList from "@/components/card/RecipesList";
 
 export default function PopularRecipesList({ isHome = false }) {
-	const { data, error } = useSWR("/recipes/popular", fetcher);
+	const { data, error } = useSWR("/recipes/popular", recipesWrapper.fetcher);
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;

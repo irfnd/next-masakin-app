@@ -27,14 +27,14 @@ export default function Home({ fallback }) {
 	);
 }
 
-export const getStaticProps = async () => {
-	const newRecipes = await recipesWrapper.fetcher("/recipes/new");
+export const getServerSideProps = async () => {
+	const newRecipes = await recipesWrapper.fetcher("/recipes", { size: 5, sort: "createdAt", order: "desc" });
 	const PopularRecipes = await recipesWrapper.fetcher("/recipes/popular");
 
 	return {
 		props: {
 			fallback: {
-				"/recipes/new": newRecipes,
+				"/recipes": newRecipes,
 				"/recipes/popular": PopularRecipes,
 			},
 		},

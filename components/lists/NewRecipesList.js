@@ -2,10 +2,10 @@ import Link from "next/link";
 import useSWR from "swr";
 import { FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { fetcher } from "@/utils/axios/recipesWrapper";
+import recipesWrapper from "@/utils/axios/recipesWrapper";
 
 export default function NewRecipesList() {
-	const { data, error } = useSWR("/recipes/new", fetcher);
+	const { data, error } = useSWR("/recipes", (url) => recipesWrapper.fetcher(url, { size: 5, sort: "createdAt", order: "desc" }));
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
@@ -16,7 +16,7 @@ export default function NewRecipesList() {
 				data.rows.map((recipe) => (
 					<SwiperSlide
 						key={recipe.id}
-						className="shadow-sm rounded-4 mb-1"
+						className="shadow-sm rounded-4 cursor-pointer mb-1"
 						style={{
 							width: "140px",
 							height: "160px",
@@ -25,7 +25,7 @@ export default function NewRecipesList() {
 							backgroundSize: "cover",
 						}}
 					>
-						<Link href="/">
+						<Link href={`/recipes/${recipe.id}`}>
 							<div className="d-flex align-items-end h-100 w-100 p-3">
 								<span className="text-white fw-medium lh-sm">{recipe.name}</span>
 							</div>
