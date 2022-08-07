@@ -3,8 +3,8 @@ import recipesWrapper from "@/utils/axios/recipesWrapper";
 
 // Components
 import Layout from "@/components/Layout";
-import RecipePhoto from "@/components/recipes/details/RecipePhoto";
-import DetailMenu from "@/components/recipes/details/DetailMenu";
+import RecipePhoto from "@/components/details/RecipePhoto";
+import DetailMenu from "@/components/details/DetailMenu";
 
 export default function RecipesDetail({ id, fallback }) {
 	return (
@@ -22,13 +22,13 @@ export default function RecipesDetail({ id, fallback }) {
 }
 
 export const getStaticPaths = async () => {
-	const allRecipes = await recipesWrapper.fetcher("/recipes/all");
+	const allRecipes = await recipesWrapper.get("/recipes/all");
 	const paths = allRecipes.map((recipe) => ({ params: { id: recipe.id.toString() } }));
 	return { paths, fallback: false };
 };
 
 export const getStaticProps = async ({ params }) => {
-	const recipe = await recipesWrapper.fetcher(`/recipes/${params.id}`);
+	const recipe = await recipesWrapper.get(`/recipes/${params.id}`);
 	return {
 		props: {
 			id: params.id,

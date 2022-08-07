@@ -25,7 +25,7 @@ export default function Popular({ fallback }) {
 }
 
 export const getStaticProps = async () => {
-	const PopularRecipes = await recipesWrapper.fetcher("/recipes/popular");
+	const PopularRecipes = await recipesWrapper.get("/recipes/popular");
 
 	return {
 		props: {

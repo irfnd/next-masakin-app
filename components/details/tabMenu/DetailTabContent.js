@@ -2,7 +2,7 @@ import useSWR from "swr";
 import recipesWrapper from "@/utils/axios/recipesWrapper";
 
 export default function DetailTabContent({ id }) {
-	const { data, error } = useSWR(`/recipes/${id}`, recipesWrapper.fetcher);
+	const { data, error } = useSWR(`/recipes/${id}`, recipesWrapper.get);
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;

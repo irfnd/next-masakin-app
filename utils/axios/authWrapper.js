@@ -1,9 +1,9 @@
-import api from "@/utils/axios/api";
+import axios from "axios";
 
 const authWrapper = {
-	register: (data) => api.post("/auth/register", data),
-	login: (data) => api.post("/auth/login", data),
-	logout: () => api.get("/auth/logout"),
+	register: (data) => axios.post("/api/auth/register", data),
+	login: (data) => axios.post("/api/auth/login", data),
+	logout: () => axios.get("/api/auth/logout"),
 };
 
 export default authWrapper;

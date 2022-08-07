@@ -5,15 +5,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import recipesWrapper from "@/utils/axios/recipesWrapper";
 
 export default function NewRecipesList() {
-	const { data, error } = useSWR("/recipes", (url) => recipesWrapper.fetcher(url, { size: 5, sort: "createdAt", order: "desc" }));
+	const { data, error } = useSWR("/recipes", (url) => recipesWrapper.getNew(url));
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
 
 	return (
 		<Swiper modules={[FreeMode]} spaceBetween={15} slidesPerView={"auto"} freeMode>
-			{data.rows.length > 0 ? (
-				data.rows.map((recipe) => (
+			{data.length > 0 ? (
+				data.map((recipe) => (
 					<SwiperSlide
 						key={recipe.id}
 						className="shadow-sm rounded-4 cursor-pointer mb-1"

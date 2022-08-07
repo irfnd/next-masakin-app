@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 // Components
-import TabMenu from "@/components/recipes/details/tabMenu/TabMenu";
-import TabContent from "@/components/recipes/details/tabMenu/TabContent";
+import TabMenu from "@/components/details/tabMenu/TabMenu";
+import TabContent from "@/components/details/tabMenu/TabContent";
 
 export default function DetailMenu({ id }) {
 	const [tabActive, setTabActive] = useState("details");

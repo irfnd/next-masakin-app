@@ -1,7 +1,7 @@
 // Components
-import DetailTabContent from "@/components/recipes/details/tabMenu/DetailTabContent";
-import VideoTabContent from "@/components/recipes/details/tabMenu/VideoTabContent";
-import CommentTabContent from "@/components/recipes/details/tabMenu/CommentTabContent";
+import DetailTabContent from "@/components/details/tabMenu/DetailTabContent";
+import VideoTabContent from "@/components/details/tabMenu/VideoTabContent";
+import CommentTabContent from "@/components/details/tabMenu/CommentTabContent";
 
 export default function TabContent({ tabActive, id }) {
 	// Attributes

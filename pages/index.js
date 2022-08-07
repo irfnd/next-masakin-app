@@ -28,8 +28,8 @@ export default function Home({ fallback }) {
 }
 
 export const getServerSideProps = async () => {
-	const newRecipes = await recipesWrapper.fetcher("/recipes", { size: 5, sort: "createdAt", order: "desc" });
-	const PopularRecipes = await recipesWrapper.fetcher("/recipes/popular");
+	const newRecipes = await recipesWrapper.getNew("/recipes");
+	const PopularRecipes = await recipesWrapper.get("/recipes/popular");
 
 	return {
 		props: {
