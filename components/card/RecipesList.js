@@ -1,19 +1,13 @@
 import Link from "next/link";
-import useSWR, { useSWRConfig } from "swr";
-import { getCookie, hasCookie } from "cookies-next";
-import recipesWrapper from "@/utils/axios/recipesWrapper";
+import { hasCookie } from "cookies-next";
 
 // Icons + Images
 import { RiUser3Fill, RiHeartFill, RiBookmarkFill } from "react-icons/ri";
 
-export default function RecipesList({ recipe, type, withBtn = false }) {
-	const token = getCookie("accessToken");
-	const { mutate: checked } = useSWRConfig();
-	const { data, mutate } = useSWR(
-		() => "/recipes/check/" + recipe.id,
-		(url) => recipesWrapper.check(url, token)
-	);
+// Components
+import LikedSavedBtn from "@/components/button/LikedSavedBtn";
 
+export default function RecipesList({ recipe, type, withBtn = false }) {
 	// Attributes
 	const photo = `url(${recipe.photo || "/images/food-placeholder.png"})`;
 	const photoStyle = {
@@ -23,8 +17,6 @@ export default function RecipesList({ recipe, type, withBtn = false }) {
 		backgroundPosition: "center",
 		backgroundSize: "cover",
 	};
-	const btnNotActive = `btn btn-outline-warning btn-outline-warning-text rounded-circle p-2`;
-	const btnActive = `btn btn-warning rounded-circle text-white p-2`;
 
 	return (
 		<>
@@ -54,40 +46,7 @@ export default function RecipesList({ recipe, type, withBtn = false }) {
 					</div>
 				</Link>
 
-				{withBtn && hasCookie("accessToken") && (
-					<div className="col-auto d-flex flex-column justify-content-center p-3 ps-0">
-						<div>
-							<button
-								className={`${data && data.liked ? btnActive : btnNotActive} me-1`}
-								onClick={async () => {
-									if (data.liked) {
-										await recipesWrapper.unlikedOrUnsaved(`/recipes/liked/${recipe.id}`, token);
-									} else {
-										await recipesWrapper.likedOrSaved(`/recipes/liked/${recipe.id}`, token);
-									}
-									checked(`/recipes/${type}`);
-									mutate();
-								}}
-							>
-								<RiHeartFill size={22} />
-							</button>
-							<button
-								className={`${data && data.saved ? btnActive : btnNotActive}`}
-								onClick={async () => {
-									if (data.saved) {
-										await recipesWrapper.unlikedOrUnsaved(`/recipes/saved/${recipe.id}`, token);
-									} else {
-										await recipesWrapper.likedOrSaved(`/recipes/saved/${recipe.id}`, token);
-									}
-									checked(`/recipes/${type}`);
-									mutate();
-								}}
-							>
-								<RiBookmarkFill size={22} />
-							</button>
-						</div>
-					</div>
-				)}
+				{withBtn && hasCookie("accessToken") && <LikedSavedBtn id={recipe.id} type={type} />}
 			</div>
 		</>
 	);

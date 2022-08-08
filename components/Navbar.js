@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 // Icons + Images
-import { BiHomeAlt, BiPlusCircle, BiComment, BiUser } from "react-icons/bi";
+import { BiHomeAlt, BiPlusCircle, BiSearch, BiUser } from "react-icons/bi";
 
 export default function Navbar() {
 	const router = useRouter();
@@ -24,9 +24,9 @@ export default function Navbar() {
 					</button>
 				</Link>
 
-				<Link href="/comments">
-					<button className={`col btn ${activeNav("/comments")} rounded-4 py-3 p-0`}>
-						<BiComment size={28} />
+				<Link href="/recipes">
+					<button className={`col btn ${activeNav("/recipes")} rounded-4 py-3 p-0`}>
+						<BiSearch size={28} />
 					</button>
 				</Link>
 
