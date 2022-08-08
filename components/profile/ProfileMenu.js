@@ -52,10 +52,10 @@ export default function Menu() {
 	}
 
 	return (
-		<div className="d-flex flex-column align-items-center h-auto mw-profile gap-3 px-4 py-5 mb-5">
-			<span className="fw-semibold mb-2">You are not logged in yet!</span>
+		<div className="d-flex flex-column align-items-center h-auto mw-profile px-4 py-5 mb-5">
+			<span className="fw-semibold mb-3">You are not logged in yet!</span>
 			<Link href="/register">
-				<button className="btn btn-primary w-75 text-white rounded-4">SIGN UP</button>
+				<button className="btn btn-primary w-75 text-white rounded-4 mb-3">SIGN UP</button>
 			</Link>
 			<Link href="/login">
 				<button className="btn btn-outline-primary btn-outline-primary-text rounded-4 w-75">LOG IN</button>

@@ -7,8 +7,8 @@ export default function ProfilePhoto() {
 	const name = user?.name || "Guest";
 	const photoUrl = `url(${user?.photo || "/images/profile-placeholder.png"})`;
 	const photoStyle = {
-		width: 100,
-		height: 100,
+		width: 150,
+		height: 150,
 		backgroundImage: photoUrl,
 		backgroundPosition: "center",
 		backgroundSize: "cover",

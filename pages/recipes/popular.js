@@ -24,7 +24,7 @@ export default function Popular({ fallback }) {
 	);
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
 	const PopularRecipes = await recipesWrapper.get("/recipes/popular");
 
 	return {
