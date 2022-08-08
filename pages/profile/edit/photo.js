@@ -1,4 +1,4 @@
-import { hasCookie, getCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
 import { SWRConfig } from "swr";
 import profileWrapper from "@/utils/axios/profileWrapper";
 

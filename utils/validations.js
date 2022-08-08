@@ -47,3 +47,23 @@ export const AddRecipeSchema = yup.object().shape({
 	photo: yup.mixed(),
 	shortDesc: yup.string().trim().max(250, "Description must be less than 250 characters!"),
 });
+
+export const UpdateProfileSchema = yup.object({
+	name: yup.string().trim().max(45, "Name must be less than 45 characters!").required("Name required!"),
+	email: yup
+		.string()
+		.trim()
+		.lowercase()
+		.email("Email must be valid!")
+		.max(60, "Email must be less than 60 characters!")
+		.required("Email required!"),
+	phoneNumber: yup
+		.string()
+		.trim()
+		.max(16, "Phone number must be less than 16 numbers!")
+		.required("Phone number required!")
+		.matches(
+			/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+			"Phone number must be valid!"
+		),
+});

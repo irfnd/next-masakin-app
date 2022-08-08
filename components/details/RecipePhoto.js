@@ -9,7 +9,6 @@ import BackBtn from "@/components/BackBtn";
 
 export default function RecipePhoto({ id }) {
 	const { data, error } = useSWR(`/recipes/${id}`, recipesWrapper.get);
-	console.log(data);
 
 	if (error) return <p>Something went wrong!</p>;
 	if (!data) return <p>Loading...</p>;
