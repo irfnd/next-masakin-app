@@ -26,22 +26,13 @@ export default function Liked({ fallback }) {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	if (hasCookie("accessToken", { req })) {
-		const likedRecipes = await recipesWrapper.getPrivate("/recipes/liked", getCookie("accessToken", { req }));
-
-		return {
-			props: {
-				fallback: {
-					"/recipes/liked": likedRecipes,
-				},
-			},
-		};
-	}
+	const likedRecipes = await recipesWrapper.getPrivate("/recipes/liked", getCookie("accessToken", { req }));
 
 	return {
-		redirect: {
-			destination: "/",
-			permanent: false,
+		props: {
+			fallback: {
+				"/recipes/liked": likedRecipes,
+			},
 		},
 	};
 };

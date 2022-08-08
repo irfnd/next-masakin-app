@@ -8,10 +8,10 @@ export default function QuestionModal({ modal, hideModal, okBtn, cancelBtn }) {
 			</Modal.Header>
 			<Modal.Body>{modal.content}</Modal.Body>
 			<Modal.Footer>
-				<button className={okBtn.className} onClick={okBtn.okClick}>
+				<button className={okBtn.className} onClick={okBtn.okClick} disabled={okBtn.disabled}>
 					{okBtn.text}
 				</button>
-				<button className={cancelBtn.className} onClick={hideModal}>
+				<button className={cancelBtn.className} onClick={hideModal} disabled={cancelBtn.disabled}>
 					{cancelBtn.text}
 				</button>
 			</Modal.Footer>

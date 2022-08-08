@@ -26,22 +26,13 @@ export default function Mine({ fallback }) {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	if (hasCookie("accessToken", { req })) {
-		const mineRecipes = await recipesWrapper.getPrivate("/recipes/mine", getCookie("accessToken", { req }));
-
-		return {
-			props: {
-				fallback: {
-					"/recipes/mine": mineRecipes,
-				},
-			},
-		};
-	}
+	const mineRecipes = await recipesWrapper.getPrivate("/recipes/mine", getCookie("accessToken", { req }));
 
 	return {
-		redirect: {
-			destination: "/",
-			permanent: false,
+		props: {
+			fallback: {
+				"/recipes/mine": mineRecipes,
+			},
 		},
 	};
 };

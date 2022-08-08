@@ -1,17 +1,24 @@
 import { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useSWRConfig } from "swr";
 import { useFormContext } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
 import { getCookie } from "cookies-next";
+import profileWrapper from "@/utils/axios/profileWrapper";
+import { authActions } from "@/utils/redux/slices/authSlice";
 
 // Components
 import QuestionModal from "@/components/modals/QuestionModal";
 
-export default function FormPhotoProfile({ photo = null, input, isLoading, mb }) {
+export default function FormPhotoProfile({ photo = null, input, isLoading, setIsLoading, setIsSuccess, setMessage, mb }) {
+	const { mutate } = useSWRConfig();
+
 	const containerRef = useRef(null);
-	const [deleteSuccess, setDeleteSuccess] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
 	const [errors, setErrors] = useState(null);
 	const [showModal, setShowModal] = useState(null);
+	const { user } = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 
 	const { register, setValue } = useFormContext();
 	const { onChange, name } = register(input.name);
@@ -32,10 +39,32 @@ export default function FormPhotoProfile({ photo = null, input, isLoading, mb })
 	};
 
 	const onOkModal = () => {
-		console.log("ok clicked!");
-		if (deleteSuccess) {
-			setShowModal(false);
-		}
+		setIsLoading(true);
+		profileWrapper
+			.deletePhoto("/profile/photo", getCookie("accessToken"))
+			.then((res) => {
+				setIsSuccess(true);
+				setMessage(res.message);
+				dispatch(authActions.update({ ...user, photo: null, photoName: null }));
+				setTimeout(() => {
+					setIsLoading(false);
+					setIsSuccess(null);
+					setMessage(null);
+					setShowModal(false);
+					mutate("/profile");
+				}, 3000);
+			})
+			.catch((err) => {
+				setIsSuccess(false);
+				setMessage(err?.response?.data?.message);
+				setTimeout(() => {
+					setIsLoading(false);
+					setIsSuccess(null);
+					setMessage(null);
+					setShowModal(false);
+					mutate("/profile");
+				}, 3000);
+			});
 	};
 
 	const allowedFile = { "image/jpg": [".jpg"], "image/jpeg": [".jpeg"], "image/png": [".png"] };
@@ -78,7 +107,7 @@ export default function FormPhotoProfile({ photo = null, input, isLoading, mb })
 				{photo && (
 					<button
 						type="button"
-						className="btn rounded-3 btn-outline-primary btn-outline-primary-text p-2 px-4"
+						className="btn rounded-3 btn-outline-danger btn-outline-danger-text p-2 px-4"
 						onClick={() => setShowModal(true)}
 						disabled={isLoading}
 					>
@@ -104,8 +133,13 @@ export default function FormPhotoProfile({ photo = null, input, isLoading, mb })
 					centered: true,
 				}}
 				hideModal={() => setShowModal(false)}
-				okBtn={{ text: "Delete", className: "btn btn-outline-danger btn-outline-danger-text py-2 px-3", okClick: onOkModal }}
-				cancelBtn={{ text: "Cancel", className: "btn btn-primary text-white py-2 px-3" }}
+				okBtn={{
+					text: "Delete",
+					className: "btn btn-outline-danger btn-outline-danger-text py-2 px-3",
+					okClick: onOkModal,
+					disabled: isLoading,
+				}}
+				cancelBtn={{ text: "Cancel", className: "btn btn-primary text-white py-2 px-3", disabled: isLoading }}
 			/>
 		</div>
 	);
