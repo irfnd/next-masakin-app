@@ -43,6 +43,10 @@ const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	reducers: {
+		update: (state, action) => {
+			state.isLoggedIn = true;
+			state.user = action.payload;
+		},
 		logout: () => {
 			authWrapper.logout();
 			return initialState;

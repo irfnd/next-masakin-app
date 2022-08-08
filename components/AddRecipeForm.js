@@ -93,7 +93,7 @@ export default function AddRecipeForm() {
 							</>
 						)}
 						{!isLoading && !isSuccess && "POST"}
-						{!isLoading && isSuccess && "YOU POSTED NEW RECIPE"}
+						{!isLoading && isSuccess && "POSTED SUCCESSFULLY"}
 					</button>
 				</div>
 			</form>
