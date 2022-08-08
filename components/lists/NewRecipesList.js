@@ -7,9 +7,6 @@ import recipesWrapper from "@/utils/axios/recipesWrapper";
 export default function NewRecipesList() {
 	const { data, error } = useSWR("/recipes", (url) => recipesWrapper.getNew(url));
 
-	if (error) return <p>Something went wrong!</p>;
-	if (!data) return <p>Loading...</p>;
-
 	return (
 		<Swiper modules={[FreeMode]} spaceBetween={15} slidesPerView={"auto"} freeMode>
 			{data.length > 0 ? (

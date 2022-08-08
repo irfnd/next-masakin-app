@@ -5,11 +5,9 @@ import recipesWrapper from "@/utils/axios/recipesWrapper";
 import RecipesList from "@/components/card/RecipesList";
 
 export default function PopularRecipesList({ isHome = false }) {
-	const { data, error } = useSWR("/recipes/popular", recipesWrapper.get);
+	const { data } = useSWR("/recipes/popular", recipesWrapper.get);
 
-	if (error) return <p>Something went wrong!</p>;
-	if (!data) return <p>Loading...</p>;
-	if (isHome) return <>{data.length > 0 && data.slice(0, 5).map((recipe) => <RecipesList recipe={recipe} key={recipe.id} />)}</>;
+	if (isHome) return <>{data.length > 0 && data.slice(0, 5).map((recipe) => <RecipesList recipe={recipe} type="popular" key={recipe.id} />)}</>;
 
-	return <>{data.length > 0 && data.map((recipe) => <RecipesList recipe={recipe} key={recipe.id} withBtn />)}</>;
+	return <>{data.length > 0 && data.map((recipe) => <RecipesList recipe={recipe} type="popular" key={recipe.id} withBtn />)}</>;
 }
