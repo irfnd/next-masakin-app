@@ -24,11 +24,11 @@ export default function Navbar() {
 					</button>
 				</Link>
 
-				<Link href="/recipes">
-					<button className={`col btn ${activeNav("/recipes")} rounded-4 py-3 p-0`}>
+				{/* <Link href="/profile">
+					<button className={`col btn ${activeNav("/chat")} rounded-4 py-3 p-0`}>
 						<BiSearch size={28} />
 					</button>
-				</Link>
+				</Link> */}
 
 				<Link href="/profile">
 					<button className={`col btn ${activeNav("/profile")} rounded-4 py-3 p-0`}>
