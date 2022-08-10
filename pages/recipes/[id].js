@@ -24,7 +24,7 @@ export default function RecipesDetail({ id, fallback }) {
 export const getStaticPaths = async () => {
 	const allRecipes = await recipesWrapper.get("/recipes/all");
 	const paths = allRecipes.map((recipe) => ({ params: { id: recipe.id.toString() } }));
-	return { paths, fallback: false };
+	return { paths, fallback: true };
 };
 
 export const getStaticProps = async ({ params }) => {
@@ -34,5 +34,6 @@ export const getStaticProps = async ({ params }) => {
 			id: params.id,
 			fallback: { [`/recipes/${params.id}`]: recipe },
 		},
+		revalidate: 5,
 	};
 };
