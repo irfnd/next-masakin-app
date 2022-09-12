@@ -34,6 +34,6 @@ export const getStaticProps = async ({ params }) => {
 			id: params.id,
 			fallback: { [`/recipes/${params.id}`]: recipe },
 		},
-		revalidate: 5,
+		revalidate: 3,
 	};
 };
