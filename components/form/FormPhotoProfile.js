@@ -10,7 +10,15 @@ import { authActions } from "@/utils/redux/slices/authSlice";
 // Components
 import QuestionModal from "@/components/modals/QuestionModal";
 
-export default function FormPhotoProfile({ photo = null, input, isLoading, setIsLoading, setIsSuccess, setMessage, mb }) {
+export default function FormPhotoProfile({
+	photo = null,
+	input,
+	isLoading,
+	setIsLoading,
+	setIsSuccess,
+	setMessage,
+	mb,
+}) {
 	const { mutate } = useSWRConfig();
 
 	const containerRef = useRef(null);
@@ -68,7 +76,15 @@ export default function FormPhotoProfile({ photo = null, input, isLoading, setIs
 	};
 
 	const allowedFile = { "image/jpg": [".jpg"], "image/jpeg": [".jpeg"], "image/png": [".png"] };
-	const dropzoneOptions = { onDrop, multiple: false, maxFiles: 1, maxSize: 2 * 1000000, accept: allowedFile, noClick: true, noKeyboard: true };
+	const dropzoneOptions = {
+		onDrop,
+		multiple: false,
+		maxFiles: 1,
+		maxSize: 2 * 1000000,
+		accept: allowedFile,
+		noClick: true,
+		noKeyboard: true,
+	};
 	const { getRootProps, getInputProps, open } = useDropzone(dropzoneOptions);
 
 	// Attributes
@@ -86,20 +102,33 @@ export default function FormPhotoProfile({ photo = null, input, isLoading, setIs
 	return (
 		<div className={container} ref={containerRef} tabIndex={1}>
 			<div className="text-end rounded-circle rounded-4 mb-3" style={photoStyle}>
-				<div className="d-flex justify-content-center align-items-end text-center rounded-circle w-100 h-100 p-4" {...getRootProps()}>
+				<div
+					className="d-flex justify-content-center align-items-end text-center rounded-circle w-100 h-100 p-4"
+					{...getRootProps()}
+				>
 					<input type="image" name={name} onChange={onChange} {...getInputProps()} />
 				</div>
 			</div>
 
 			<div className="d-flex flex-column w-50 gap-2 mb-4">
 				{!selectedFile && (
-					<button type="button" className="btn rounded-3 btn-primary text-white p-2 px-4" onClick={open} disabled={isLoading}>
+					<button
+						type="button"
+						className="btn rounded-3 btn-primary text-white p-2 px-4"
+						onClick={open}
+						disabled={isLoading}
+					>
 						Select Photo
 					</button>
 				)}
 
 				{selectedFile && (
-					<button type="button" className="btn rounded-3 btn-danger text-white p-2 px-4" onClick={onClear} disabled={isLoading}>
+					<button
+						type="button"
+						className="btn rounded-3 btn-danger text-white p-2 px-4"
+						onClick={onClear}
+						disabled={isLoading}
+					>
 						Change Photo
 					</button>
 				)}

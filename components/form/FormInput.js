@@ -14,7 +14,9 @@ export default function FormInput({ mb, icon, input }) {
 
 	// Attributes
 	const container = `${mb ? `mb-${mb}` : null}`;
-	const iconStyle = `position-absolute ms-3 ${errors[input.name] ? "text-danger" : iconColor ? "text-primary" : "text-secondary-2"}`;
+	const iconStyle = `position-absolute ms-3 ${
+		errors[input.name] ? "text-danger" : iconColor ? "text-primary" : "text-secondary-2"
+	}`;
 	const inputType = input.type === "password" ? (showPassword ? "text" : input.type) : input.type;
 	const inputStyle = `form-control rounded-4 ${input.bg} ${errors[input.name] && "is-invalid"} ps-5`;
 
@@ -34,7 +36,9 @@ export default function FormInput({ mb, icon, input }) {
 						ref={ref}
 					/>
 				</div>
-				{input.type === "password" && <FormShowPass showPassword={showPassword} onClick={() => setShowPassword(!showPassword)} />}
+				{input.type === "password" && (
+					<FormShowPass showPassword={showPassword} onClick={() => setShowPassword(!showPassword)} />
+				)}
 			</div>
 			{errors[input.name] && <span className="text-danger ts-14">{errors[input.name].message}</span>}
 		</div>

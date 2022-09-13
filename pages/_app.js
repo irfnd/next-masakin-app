@@ -4,6 +4,7 @@ import { store, persistor } from "@/utils/redux/store";
 import NextNProgress from "nextjs-progressbar";
 import { hasCookie } from "cookies-next";
 import { authActions } from "@/utils/redux/slices/authSlice";
+import "@/utils/axios/api";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";

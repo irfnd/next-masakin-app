@@ -14,7 +14,7 @@ export default function Home({ fallback }) {
 	const [search, setSearch] = useState("");
 
 	return (
-		<Layout title="Homepage - Resip! App">
+		<Layout title="Homepage - Masakin App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile pb-5">
 					<div className="p-4 h-100 w-100">

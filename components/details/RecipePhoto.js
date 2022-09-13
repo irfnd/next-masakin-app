@@ -14,7 +14,10 @@ export default function RecipePhoto({ id }) {
 	const photoStyle = { height: "50%", backgroundImage: photoUrl, backgroundSize: "cover" };
 
 	return (
-		<div className="d-flex flex-column justify-content-center bg-primary align-items-center gap-3 w-100 px-4 py-5" style={photoStyle}>
+		<div
+			className="d-flex flex-column justify-content-center bg-primary align-items-center gap-3 w-100 px-4 py-5"
+			style={photoStyle}
+		>
 			<div className="position-relative d-flex justify-content-between align-items-end pb-2 mb-5 w-100 h-100">
 				<BackBtn style={{ top: 0 }} color="text-white" />
 				<div className="d-flex flex-column gap-2 w-50">

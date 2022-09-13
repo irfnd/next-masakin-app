@@ -15,6 +15,8 @@ export default function logout(req, res) {
 		deleteCookie("refreshToken", { req, res });
 		res.json({ message: "Logout Successfully!" });
 	} catch (error) {
-		res.status(error?.response?.data?.code || error?.cause?.code).json({ message: error?.response?.data?.message || error?.message });
+		res
+			.status(error?.response?.data?.code || error?.cause?.code)
+			.json({ message: error?.response?.data?.message || error?.message });
 	}
 }

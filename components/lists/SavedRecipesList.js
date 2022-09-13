@@ -8,5 +8,7 @@ import RecipesList from "@/components/card/RecipesList";
 export default function SavedRecipesList() {
 	const { data } = useSWR("/recipes/saved", (url) => recipesWrapper.getPrivate(url, getCookie("accessToken")));
 
-	return <>{data.length > 0 && data.map((recipe) => <RecipesList recipe={recipe} type="saved" key={recipe.id} withBtn />)}</>;
+	return (
+		<>{data.length > 0 && data.map((recipe) => <RecipesList recipe={recipe} type="saved" key={recipe.id} withBtn />)}</>
+	);
 }

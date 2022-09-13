@@ -8,7 +8,7 @@ import PopularRecipesList from "@/components/lists/PopularRecipesList";
 
 export default function Popular({ fallback }) {
 	return (
-		<Layout title="Popular Recipes - Resip! App">
+		<Layout title="Popular Recipes - Masakin App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column w-100">

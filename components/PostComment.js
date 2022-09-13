@@ -53,7 +53,11 @@ export default function PostComment({ id }) {
 				</div>
 
 				<div className="col-auto p-0 mb-3">
-					<button type="submit" className="btn btn-primary rounded-4 text-white w-100" disabled={isLoading || isSuccess}>
+					<button
+						type="submit"
+						className="btn btn-primary rounded-4 text-white w-100"
+						disabled={isLoading || isSuccess}
+					>
 						{isLoading && (
 							<>
 								<span className="spinner-border spinner-border-sm me-3"></span>

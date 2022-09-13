@@ -3,7 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "@/utils/redux/slices/authSlice";
 
 // Icons + Images
-import { RiUser3Line, RiAwardLine, RiBookmarkLine, RiHeartLine, RiLogoutBoxLine, RiArrowRightSLine } from "react-icons/ri";
+import {
+	RiUser3Line,
+	RiAwardLine,
+	RiBookmarkLine,
+	RiHeartLine,
+	RiLogoutBoxLine,
+	RiArrowRightSLine,
+} from "react-icons/ri";
 
 export default function Menu() {
 	const { isLoggedIn } = useSelector((state) => state.auth);
@@ -11,7 +18,10 @@ export default function Menu() {
 
 	if (isLoggedIn) {
 		return (
-			<div className="d-flex flex-column align-items-center h-auto mw-profile gap-2 p-5 pt-0 mb-5" style={{ zIndex: 2 }}>
+			<div
+				className="d-flex flex-column align-items-center h-auto mw-profile gap-2 p-5 pt-0 mb-5"
+				style={{ zIndex: 2 }}
+			>
 				<Link href="/profile/edit">
 					<div className="d-flex align-items-center cursor-pointer w-100 gap-3 py-3 px-2 fw-semibold">
 						<RiUser3Line className="text-warning" size={28} />

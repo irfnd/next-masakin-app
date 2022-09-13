@@ -14,6 +14,8 @@ export default async function login(req, res) {
 		setCookie("refreshToken", results.data.results.refreshToken, { req, res, ...cookieOptions });
 		res.json(results.data.results);
 	} catch (error) {
-		res.status(error?.response?.status || error?.cause?.code).json({ message: error?.response?.data?.errors || error?.message });
+		res
+			.status(error?.response?.status || error?.cause?.code)
+			.json({ message: error?.response?.data?.errors || error?.message });
 	}
 }

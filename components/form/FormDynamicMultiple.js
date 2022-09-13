@@ -25,7 +25,10 @@ export default function FormDynamicSingle({ icon, input, mb }) {
 				onFocus={() => setIconColor(!iconColor)}
 				onBlur={() => setIconColor(!iconColor)}
 			>
-				<div className="d-flex align-items-center bg-white text-secondary ts-14 fw-medium rounded-4" style={{ padding: 18 }}>
+				<div
+					className="d-flex align-items-center bg-white text-secondary ts-14 fw-medium rounded-4"
+					style={{ padding: 18 }}
+				>
 					{cloneElement(icon, { className: iconStyle, size: 24 })}
 					<span>{input.placeholder}</span>
 					<RiAddLine

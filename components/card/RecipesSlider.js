@@ -17,7 +17,9 @@ export default function RecipesSlider() {
 						style={{
 							width: "140px",
 							height: "160px",
-							backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url(${recipe.photo || "/images/food-placeholder.png"})`,
+							backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url(${
+								recipe.photo || "/images/food-placeholder.png"
+							})`,
 							backgroundPosition: "center",
 							backgroundSize: "cover",
 						}}

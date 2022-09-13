@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Add() {
 	return (
-		<Layout title="Add Recipe - Resip! App">
+		<Layout title="Add Recipe - Masakin App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-light mw-mobile p-4 pb-5">
 					<div className="d-flex flex-column w-100 pb-5 mb-4">

@@ -8,7 +8,11 @@ export default function InputSearch({ mb, value, onChange }) {
 
 	return (
 		<div className={`d-flex align-items-center w-100 mb-${mb}`}>
-			<BiSearch className={`position-absolute ms-3 ${iconColor ? "text-primary" : "text-secondary-2"}`} size={24} style={{ zIndex: 10 }} />
+			<BiSearch
+				className={`position-absolute ms-3 ${iconColor ? "text-primary" : "text-secondary-2"}`}
+				size={24}
+				style={{ zIndex: 10 }}
+			/>
 			<input
 				type="search"
 				name="search"

@@ -7,9 +7,16 @@ export default async function login(req, res) {
 		if (req.method !== "POST") {
 			throw Error("Method not allowed!", { cause: { code: httpStatus["METHOD_NOT_ALLOWED"] } });
 		}
-		const results = await axios.post(`${process.env.NEXT_PUBLIC_REST_API}/auth/register`, { name, email, phoneNumber, password });
+		const results = await axios.post(`${process.env.NEXT_PUBLIC_REST_API}/auth/register`, {
+			name,
+			email,
+			phoneNumber,
+			password,
+		});
 		res.json(results.data.results);
 	} catch (error) {
-		res.status(error?.response?.status || error?.cause?.code).json({ message: error?.response?.data?.details || error?.message });
+		res
+			.status(error?.response?.status || error?.cause?.code)
+			.json({ message: error?.response?.data?.details || error?.message });
 	}
 }

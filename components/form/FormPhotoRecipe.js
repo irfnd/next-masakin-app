@@ -26,12 +26,22 @@ export default function FormPhotoRecipe({ photo = null, input, mb, disabled }) {
 	};
 
 	const allowedFile = { "image/jpg": [".jpg"], "image/jpeg": [".jpeg"], "image/png": [".png"] };
-	const dropzoneOptions = { onDrop, multiple: false, maxFiles: 1, maxSize: 2 * 1000000, accept: allowedFile, noClick: true, noKeyboard: true };
+	const dropzoneOptions = {
+		onDrop,
+		multiple: false,
+		maxFiles: 1,
+		maxSize: 2 * 1000000,
+		accept: allowedFile,
+		noClick: true,
+		noKeyboard: true,
+	};
 	const { getRootProps, getInputProps, open } = useDropzone(dropzoneOptions);
 
 	// Attributes
 	const photoBackground = photo ? `url(${photo})` : `url(/images/food-placeholder.png)`;
-	const container = `d-flex flex-column align-items-center w-100 bg-white rounded-4 border-1 p-4 ${mb ? `mb-${mb}` : null}`;
+	const container = `d-flex flex-column align-items-center w-100 bg-white rounded-4 border-1 p-4 ${
+		mb ? `mb-${mb}` : null
+	}`;
 	const checkedPhoto = selectedFile ? `url(${selectedFile.preview})` : photoBackground;
 	const photoStyle = {
 		height: 180,
@@ -44,7 +54,10 @@ export default function FormPhotoRecipe({ photo = null, input, mb, disabled }) {
 	return (
 		<div className={container} ref={containerRef} tabIndex={1}>
 			<div className="text-end rounded-4 rounded-4 mb-3" style={photoStyle}>
-				<div className="d-flex justify-content-center align-items-end text-center rounded-circle w-100 h-100" {...getRootProps()}>
+				<div
+					className="d-flex justify-content-center align-items-end text-center rounded-circle w-100 h-100"
+					{...getRootProps()}
+				>
 					<input type="image" name={name} onChange={onChange} {...getInputProps()} />
 				</div>
 			</div>

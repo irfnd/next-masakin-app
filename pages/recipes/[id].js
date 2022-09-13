@@ -8,7 +8,7 @@ import DetailMenu from "@/components/details/DetailMenu";
 
 export default function RecipesDetail({ id, fallback }) {
 	return (
-		<Layout title={`${fallback[`/recipes/${id}`].name} - Resip! App`}>
+		<Layout title={`${fallback[`/recipes/${id}`].name} - Masakin App`}>
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="position-relative d-flex flex-column align-items-center bg-white mw-mobile">
 					<SWRConfig value={{ fallback }}>

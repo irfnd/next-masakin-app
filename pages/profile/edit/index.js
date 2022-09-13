@@ -9,7 +9,7 @@ import BackBtn from "@/components/BackBtn";
 
 export default function ProfileEdit() {
 	return (
-		<Layout title="Edit Profile - Resip! App">
+		<Layout title="Edit Profile - Masakin App">
 			<div className="d-flex justify-content-center min-vh-100">
 				<div className="d-flex flex-column align-items-center bg-home mw-mobile px-4 py-5">
 					<div className="d-flex flex-column h-100 w-100">
