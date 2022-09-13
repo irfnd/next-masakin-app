@@ -1,3 +1,5 @@
+import useProtected from "@/utils/hooks/useProtected";
+
 // Components
 import Layout from "@/components/Layout";
 import FormLayout from "@/components/form/FormLayout";
@@ -21,3 +23,5 @@ export default function Register() {
 		</Layout>
 	);
 }
+
+export const getServerSideProps = ({ req }) => useProtected(req, false, "/");

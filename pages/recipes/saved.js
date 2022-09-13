@@ -26,13 +26,16 @@ export default function Saved({ fallback }) {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	const savedRecipes = await recipesWrapper.getPrivate("/recipes/saved", getCookie("accessToken", { req }));
+	if (hasCookie("accessToken", { req })) {
+		const savedRecipes = await recipesWrapper.getPrivate("/recipes/saved", getCookie("accessToken", { req }));
 
-	return {
-		props: {
-			fallback: {
-				"/recipes/saved": savedRecipes,
+		return {
+			props: {
+				fallback: {
+					"/recipes/saved": savedRecipes,
+				},
 			},
-		},
-	};
+		};
+	}
+	return { redirect: { destination: "/profile", permanent: true } };
 };

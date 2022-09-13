@@ -1,4 +1,4 @@
-import { getCookie } from "cookies-next";
+import { hasCookie, getCookie } from "cookies-next";
 import { SWRConfig } from "swr";
 import profileWrapper from "@/utils/axios/profileWrapper";
 
@@ -26,13 +26,16 @@ export default function ProfileEditPhoto({ fallback }) {
 }
 
 export const getServerSideProps = async ({ req }) => {
-	const profile = await profileWrapper.get("/profile", getCookie("accessToken", { req }));
+	if (hasCookie("accessToken", { req })) {
+		const profile = await profileWrapper.get("/profile", getCookie("accessToken", { req }));
 
-	return {
-		props: {
-			fallback: {
-				"/profile": profile,
+		return {
+			props: {
+				fallback: {
+					"/profile": profile,
+				},
 			},
-		},
-	};
+		};
+	}
+	return { redirect: { destination: "/profile", permanent: true } };
 };

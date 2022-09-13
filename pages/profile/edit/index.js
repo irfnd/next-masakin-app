@@ -1,4 +1,5 @@
 import Link from "next/link";
+import useProtected from "@/utils/hooks/useProtected";
 
 // Icons + Images
 import { RiUserSettingsLine, RiImageEditFill, RiArrowRightSLine } from "react-icons/ri";
@@ -37,3 +38,5 @@ export default function ProfileEdit() {
 		</Layout>
 	);
 }
+
+export const getServerSideProps = ({ req }) => useProtected(req, true, "/profile");

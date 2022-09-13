@@ -1,3 +1,5 @@
+import useProtected from "@/utils/hooks/useProtected";
+
 // Components
 import Layout from "@/components/Layout";
 import AddRecipeForm from "@/components/AddRecipeForm";
@@ -18,3 +20,5 @@ export default function Add() {
 		</Layout>
 	);
 }
+
+export const getServerSideProps = ({ req }) => useProtected(req, true, "/profile");
