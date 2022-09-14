@@ -7,7 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"format": "prettier --write ./**/*.{js,json,md,scss} --config ./.prettierrc.json"
+		"format": "prettier --write ./**/*.{js,json,md,scss} --config ./.prettierrc.json",
+		"cypress": "cypress open"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^2.9.7",
@@ -30,6 +31,7 @@
 		"react-icons": "^4.4.0",
 		"react-redux": "^8.0.2",
 		"react-toastify": "^9.0.7",
+		"redux": "^4.2.0",
 		"redux-persist": "^6.0.0",
 		"redux-thunk": "^2.4.1",
 		"swiper": "^8.3.2",
@@ -38,9 +40,11 @@
 		"yup-password": "^0.2.2"
 	},
 	"devDependencies": {
+		"cypress": "^10.8.0",
 		"eslint": "8.21.0",
 		"eslint-config-next": "12.2.3",
 		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-cypress": "^2.12.1",
 		"prettier": "^2.7.1"
 	}
 }

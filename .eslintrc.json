@@ -1,6 +1,16 @@
 {
 	"extends": ["next", "prettier"],
+	"plugins": ["cypress"],
 	"rules": {
-		"react-hooks/rules-of-hooks": "off"
+		"react-hooks/rules-of-hooks": "off",
+		"cypress/no-assigning-return-values": "error",
+		"cypress/no-unnecessary-waiting": "error",
+		"cypress/assertion-before-screenshot": "warn",
+		"cypress/no-force": "warn",
+		"cypress/no-async-tests": "error",
+		"cypress/no-pause": "error"
+	},
+	"env": {
+		"cypress/globals": true
 	}
 }
