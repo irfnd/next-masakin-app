@@ -54,13 +54,13 @@ If you want to run this project locally, I recommend you to configure the [backe
 - Clone this repo
 
 ```bash
-git clone https://github.com/irfnd/fe-masakin-app
+git clone https://github.com/irfnd/next-masakin-app
 ```
 
 - Go to folder repo
 
 ```bash
-cd fe-masakin-app
+cd next-masakin-app
 ```
 
 - Install packages
